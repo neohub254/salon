@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healing Hands Executive Barbershop | Luxury Salon & Spa</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Luxury salon & barbershop offering premium makeup, facials, massage, nail services, and home services in Nyeri-Othaya Highway.">
+    <meta property="og:title" content="Healing Hands Executive Barbershop">
+    <meta property="og:description" content="Experience luxury grooming and spa services">
+    <meta property="og:image" content="assets/images/salon-interior.jpg">
+    <meta property="og:url" content="https://yourusername.github.io/healing-hands">
+</head>
+<body>
+    <!-- Interactive Hair Strands Background -->
+    <div class="hair-strands-container" id="hairCanvas"></div>
+    
+    <!-- Special Offer Modal (Will be shown after 1 minute) -->
+    <div class="special-offer-modal" id="specialOfferModal">
+        <div class="offer-content" id="offerContent">
+            <!-- Offer will be dynamically loaded from localStorage -->
+        </div>
+        <button class="close-offer" id="closeOffer">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <!-- Floating Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-toggle" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="music-controls">
+            <audio id="calmMusic" loop>
+                <!-- AUDIO UPLOAD: Calm massage music -->
+                <!-- Upload calm.mp3 or calm.wav to assets/audio/ -->
+                <source src="assets/audio/calm.mp3" type="audio/mpeg">
+                <source src="assets/audio/calm.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="music-info">
+                <p class="music-title">Calm Spa Music</p>
+                <div class="volume-control">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/254110400242?text=Hello%20Healing%20Hands!%20I'd%20like%20to%20book%20an%20appointment" 
+       class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Book via WhatsApp</span>
+    </a>
+    
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>HEALING HANDS</h1>
+                        <p>EXECUTIVE BARBERSHOP</p>
+                    </div>
+                </div>
+                
+                <div class="nav-menu" id="navMenu">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="appointment-container">
+                        <button class="appointment-btn" id="appointmentBtn">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Book Now</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="appointment-options" id="appointmentOptions">
+                            <a href="https://wa.me/254110400242?text=Hello%20Healing%20Hands!%20I'd%20like%20to%20book%20an%20appointment" 
+                               class="appointment-option whatsapp-option" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp Booking</span>
+                            </a>
+                            <a href="tel:0110400242" class="appointment-option call-option">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>Call Now</span>
+                            </a>
+                            <a href="#contact" class="appointment-option form-option">
+                                <i class="fas fa-envelope"></i>
+                                <span>Contact Form</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <!-- GIF UPLOAD: Animated hair strands background -->
+            <!-- Upload hair-strands.gif to assets/gifs/ -->
+            <img src="assets/gifs/hairgif.gif" alt="Animated hair strands" class="hero-gif">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>Luxury Redefined</span>
+                </div>
+                <h2 class="hero-title">Experience Premium <span class="highlight">Grooming</span> & <span class="highlight">Wellness</span></h2>
+                <p class="hero-subtitle">Where elegance meets expertise in the heart of Nyeri</p>
+                
+                <div class="hero-cta">
+                    <a href="#services" class="cta-btn primary-btn">
+                        <span>Explore Services</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="cta-btn secondary-btn">
+                        <span>Visit Us Today</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-home"></i>
+                        <span>Home Services Available</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon-Sat: 8AM - 8PM</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-star"></i>
+                        <span>Premium Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll to explore</p>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Premium <span class="highlight">Services</span></h2>
+                <p class="section-subtitle">Experience luxury with our comprehensive range of grooming and wellness services</p>
+            </div>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded dynamically from JSON -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="highlight">Gallery</span></h2>
+                <p class="section-subtitle">Explore our work and luxurious ambiance</p>
+            </div>
+            
+            <div class="gallery-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="makeup">Makeup</button>
+                <button class="category-btn" data-category="nails">Nails</button>
+                <button class="category-btn" data-category="massage">Massage</button>
+                <button class="category-btn" data-category="barber">Barber</button>
+                <button class="category-btn" data-category="facials">Facials</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- IMAGE UPLOAD: Makeup Gallery 1 -->
+                <!-- Upload makeup1.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="makeup">
+                    <img src="makeup1.jpg" alt="Bridal Makeup" onerror="this.src='https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Bridal Makeup</h3>
+                        <p>Professional bridal makeup services</p>
+                        <button class="gallery-book-btn" data-service="Bridal Makeup">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Nail Art 1 -->
+                <!-- Upload nails1.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="nails">
+                    <img src="nails1.jpg" alt="Nail Art Design" onerror="this.src='https://images.unsplash.com/photo-1604654894610-df63bc536371?w-800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Gold Nail Art</h3>
+                        <p>Premium nail designs</p>
+                        <button class="gallery-book-btn" data-service="Gold Nail Art">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Nail Art 2 -->
+                <!-- Upload nails2.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="nails">
+                    <img src="nails2.jpg" alt="Gel Nails" onerror="this.src='https://images.unsplash.com/photo-1607779097395-1f0a0b5e1e6f?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Gel Application</h3>
+                        <p>Long-lasting gel nails</p>
+                        <button class="gallery-book-btn" data-service="Gel Application">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Massage 1 -->
+                <!-- Upload massage.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="massage">
+                    <img src="massage.jpg" alt="Spa Massage" onerror="this.src='https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Spa Massage</h3>
+                        <p>Relaxing massage therapy</p>
+                        <button class="gallery-book-btn" data-service="Spa Massage">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Barber 1 -->
+                <!-- Upload barbering.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="barber">
+                    <img src="barbering.jpg" alt="Barber Service" onerror="this.src='https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Head Shave & Massage</h3>
+                        <p>Premium barber services</p>
+                        <button class="gallery-book-btn" data-service="Head Shave & Massage">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Facial 1 -->
+                <!-- Upload facial.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="facials">
+                    <img src="facial.jpg" alt="Facial Treatment" onerror="this.src='https://images.unsplash.com/photo-1522338242990-cd3873c6d87c?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Skin Care Facial</h3>
+                        <p>Rejuvenating facial treatments</p>
+                        <button class="gallery-book-btn" data-service="Skin Care Facial">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Nail Art 3 -->
+                <!-- Upload nails3.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="nails">
+                    <img src="nails3.jpg" alt="Acrylic Nails" onerror="this.src='https://images.unsplash.com/photo-1607779097395-1f0a0b5e1e6f?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Acrylic Nails</h3>
+                        <p>Custom acrylic designs</p>
+                        <button class="gallery-book-btn" data-service="Acrylic Nails">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- IMAGE UPLOAD: Makeup 2 -->
+                <!-- Upload makeup.jpg to assets/images/ -->
+                <div class="gallery-item" data-category="makeup">
+                    <img src="makeup.jpg" alt="Full Makeup" onerror="this.src='https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&auto=format&fit=crop'">
+                    <div class="gallery-overlay">
+                        <h3>Full Makeup</h3>
+                        <p>Complete makeup services</p>
+                        <button class="gallery-book-btn" data-service="Full Makeup">
+                            <i class="fas fa-calendar-plus"></i>
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Service <span class="highlight">Pricing</span></h2>
+                <p class="section-subtitle">Transparent pricing for all our premium services</p>
+            </div>
+            
+            <div class="pricing-tabs">
+                <button class="pricing-tab active" data-category="makeup">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Makeup</span>
+                </button>
+                <button class="pricing-tab" data-category="facials">
+                    <i class="fas fa-spa"></i>
+                    <span>Facials</span>
+                </button>
+                <button class="pricing-tab" data-category="waxing">
+                    <i class="fas fa-cut"></i>
+                    <span>Waxing</span>
+                </button>
+                <button class="pricing-tab" data-category="kinyozi">
+                    <i class="fas fa-cut"></i>
+                    <span>Kinyozi</span>
+                </button>
+                <button class="pricing-tab" data-category="massage">
+                    <i class="fas fa-hands"></i>
+                    <span>Massage</span>
+                </button>
+                <button class="pricing-tab" data-category="nails">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <span>Nails</span>
+                </button>
+            </div>
+            
+            <div class="pricing-content">
+                <!-- Pricing tables will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Visit <span class="highlight">Us</span></h2>
+                <p class="section-subtitle">We're here to provide you with the best experience</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Location</h3>
+                            <p>Kiamwathi (Nyeri-Othaya Highway)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone Number</h3>
+                            <a href="tel:0110400242">0110400 242</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Working Hours</h3>
+                            <p>Monday - Saturday: 8:00 AM - 8:00 PM</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Home Services</h3>
+                            <p>Available upon request</p>
+                            <small>Contact us for details</small>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/healinghandsexecutivespa?igsh=YndxOXl6bzNhdGd3" class="social-link instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@executivebarbershop0?_r=1&_t=ZM-9344NeYSLyl" class="social-link tiktok" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                            <span>TikTok</span>
+                        </a>
+                        <a href="https://wa.me/254110400242" class="social-link whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Book an Appointment</h3>
+                    <form id="appointmentForm" class="appointment-form">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Phone Number" required>
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Select Service</option>
+                                <option value="makeup">Makeup Services</option>
+                                <option value="facial">Facial Treatment</option>
+                                <option value="massage">Massage Therapy</option>
+                                <option value="barber">Barber Services</option>
+                                <option value="nails">Nail Services</option>
+                                <option value="waxing">Waxing Services</option>
+                            </select>
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="date" id="date" required>
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="time" id="time" required>
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" placeholder="Additional Notes (Optional)" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="homeService">
+                            <label for="homeService">Request Home Service (Additional charges may apply)</label>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span>Book Appointment</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Map Placeholder -->
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Google Maps integration will be added here</p>
+                    <small>Location: Kiamwathi (Nyeri-Othaya Highway)</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h2>HEALING HANDS</h2>
+                            <p>EXECUTIVE BARBERSHOP</p>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Redefining luxury grooming and wellness experiences</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Services</h3>
+                        <a href="#pricing" data-category="makeup">Makeup</a>
+                        <a href="#pricing" data-category="facials">Facials</a>
+                        <a href="#pricing" data-category="massage">Massage</a>
+                        <a href="#pricing" data-category="nails">Nail Services</a>
+                        <a href="#pricing" data-category="barber">Barber Services</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Contact Info</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Kiamwathi, Nyeri</p>
+                        <p><i class="fas fa-phone"></i> 0110400 242</p>
+                        <p><i class="fas fa-clock"></i> Mon-Sat: 8AM-8PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Healing Hands Executive Barbershop. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-actions">
+                    <!-- Admin Access Link -->
+                    <a href="admin.html" class="admin-link" id="adminLink">
+                        <i class="fas fa-lock"></i>
+                        <span>Admin Access</span>
+                    </a>
+                    
+                    <div class="social-footer">
+                        <a href="https://www.instagram.com/healinghandsexecutivespa?igsh=YndxOXl6bzNhdGd3" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@executivebarbershop0?_r=1&_t=ZM-9344NeYSLyl" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/254110400242" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Files -->
+    <script src="script.js"></script>
+    
+    <!-- Service Prices Data -->
+    <script>
+        // This will be loaded from localStorage or default values
+        const defaultServices = {
+            makeup: [
+                { name: "Simple Make-up", price: 500 },
+                { name: "Full Make-up", price: 1000 },
+                { name: "Bridal Make-up", price: 2500 },
+                { name: "Photoshop Make-up", price: 800 },
+                { name: "Male Make-up", price: 500 }
+            ],
+            facials: [
+                { name: "Simple Product", price: 1000 },
+                { name: "Garnier Product", price: 1200 },
+                { name: "Skin Touch Project", price: 800 },
+                { name: "Half Facial", price: 600 }
+            ],
+            waxing: [
+                { name: "Eyebrow Waxing", price: 300 },
+                { name: "Full Body Waxing", price: 2500 },
+                { name: "Full Leg Wax", price: 900 },
+                { name: "Half Leg", price: 500 },
+                { name: "Brazilian Wax", price: 1200 }
+            ],
+            kinyozi: [
+                { name: "Head Shave", price: 300 },
+                { name: "Head Shave + Massage + Steam", price: 500 },
+                { name: "Face Scrub", price: 300 },
+                { name: "Nail Cutting", price: 200 },
+                { name: "Beard Trim", price: 100 }
+            ],
+            massage: [
+                { name: "Steam Massage", price: 4000 },
+                { name: "Sensual Massage", price: 7000 },
+                { name: "Bamboo Massage", price: 3500 },
+                { name: "Teen Massage", price: 1000 },
+                { name: "Swedish Massage", price: 2500 },
+                { name: "Deep Tissue Massage", price: 3000 },
+                { name: "Lava Stone Massage", price: 3500 },
+                { name: "Sport Massage", price: 3500 }
+            ],
+            nails: [
+                { name: "Gel Application", price: 400 },
+                { name: "Artificial Nail", price: 600 },
+                { name: "Acrylic", price: 1200 },
+                { name: "Manicure (full)", price: 900 },
+                { name: "Pedicure (full)", price: 900 }
+            ]
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Healing Hands Executive Barbershop</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="admin-style.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <!-- Sidebar Navigation -->
+    <nav class="admin-sidebar">
+        <div class="sidebar-header">
+            <div class="admin-avatar">
+                <div class="avatar-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="avatar-info">
+                    <h3>Salon Owner</h3>
+                    <p class="role">👑 Boss Lady</p>
+                </div>
+            </div>
+            
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar-menu">
+            <a href="#dashboard" class="menu-item active">
+                <div class="menu-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <span class="menu-text">Dashboard</span>
+                <div class="menu-badge">Home</div>
+            </a>
+            
+            <a href="#services" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <span class="menu-text">Services & Pricing</span>
+                <div class="menu-badge" id="servicesBadge">6</div>
+            </a>
+            
+            <a href="#offers" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <span class="menu-text">Special Offers</span>
+                <div class="menu-badge new">New</div>
+            </a>
+            
+            <a href="#appointments" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-calendar-star"></i>
+                </div>
+                <span class="menu-text">Appointments</span>
+                <div class="menu-badge" id="appointmentsBadge">12</div>
+            </a>
+            
+            <a href="#analytics" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <span class="menu-text">Analytics</span>
+            </a>
+            
+            <a href="#messages" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-comment-heart"></i>
+                </div>
+                <span class="menu-text">Messages</span>
+                <div class="menu-badge" id="messagesBadge">5</div>
+            </a>
+            
+            <a href="#settings" class="menu-item">
+                <div class="menu-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <span class="menu-text">Settings</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="salon-status">
+                <div class="status-indicator active"></div>
+                <span>Salon is Open</span>
+            </div>
+            
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="admin-content">
+        <!-- Top Bar -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <h1 class="page-title">
+                    <i class="fas fa-gem"></i>
+                    <span>Dashboard</span>
+                </h1>
+                <p class="page-subtitle">Welcome back, Queen! 👑</p>
+            </div>
+            
+            <div class="topbar-right">
+                <div class="admin-notifications">
+                    <button class="notification-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </button>
+                    <div class="notification-dropdown">
+                        <div class="notification-header">
+                            <h4>Notifications</h4>
+                            <button class="mark-all-read">Mark all read</button>
+                        </div>
+                        <div class="notification-list">
+                            <!-- Notifications loaded via JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-quick-actions">
+                    <button class="quick-action-btn" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="quick-action-btn" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <div class="current-date">
+                    <i class="fas fa-calendar-heart"></i>
+                    <span id="currentDate">Loading...</span>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <section class="stats-grid" id="dashboard">
+                <!-- Stats loaded via JS -->
+            </section>
+            
+            <!-- Services & Pricing Management -->
+            <section class="management-section" id="services">
+                <div class="section-header">
+                    <h2><i class="fas fa-spa"></i> Services & Pricing Management</h2>
+                    <p>Edit your service prices and descriptions</p>
+                </div>
+                
+                <div class="services-management">
+                    <!-- Service Categories Tabs -->
+                    <div class="service-categories-tabs">
+                        <!-- Tabs loaded via JS -->
+                    </div>
+                    
+                    <!-- Services List -->
+                    <div class="services-list-container">
+                        <div class="services-list-header">
+                            <h3>Edit Service Prices</h3>
+                            <button class="save-all-btn" id="saveAllPrices">
+                                <i class="fas fa-save"></i>
+                                Save All Changes
+                            </button>
+                        </div>
+                        
+                        <div class="services-list" id="servicesList">
+                            <!-- Services loaded via JS -->
+                        </div>
+                        
+                        <div class="services-actions">
+                            <button class="add-service-btn" id="addServiceBtn">
+                                <i class="fas fa-plus-circle"></i>
+                                Add New Service
+                            </button>
+                            <button class="reset-prices-btn" id="resetPricesBtn">
+                                <i class="fas fa-undo"></i>
+                                Reset to Default
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Special Offers Management -->
+            <section class="management-section" id="offers">
+                <div class="section-header">
+                    <h2><i class="fas fa-gift"></i> Special Offers Management</h2>
+                    <p>Create eye-catching offers for your customers</p>
+                </div>
+                
+                <div class="offers-management">
+                    <!-- Current Offer Preview -->
+                    <div class="current-offer-preview">
+                        <h3>Current Active Offer</h3>
+                        <div class="offer-preview-card" id="currentOfferPreview">
+                            <!-- Current offer loaded via JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Create Offer Form -->
+                    <div class="create-offer-form">
+                        <h3><i class="fas fa-magic"></i> Create New Special Offer</h3>
+                        
+                        <!-- Gradient Color Picker -->
+                        <div class="gradient-picker">
+                            <h4>Choose Offer Style</h4>
+                            <p>Select a beautiful gradient for your offer box</p>
+                            
+                            <div class="gradient-options" id="gradientOptions">
+                                <!-- Gradient options loaded via JS -->
+                            </div>
+                            
+                            <!-- Custom Gradient Builder -->
+                            <div class="custom-gradient-builder" id="customGradientBuilder">
+                                <h5>Create Custom Gradient</h5>
+                                <div class="color-pickers">
+                                    <div class="color-picker">
+                                        <label>Color 1</label>
+                                        <input type="color" id="color1" value="#ff6b9d">
+                                    </div>
+                                    <div class="color-picker">
+                                        <label>Color 2</label>
+                                        <input type="color" id="color2" value="#ffd700">
+                                    </div>
+                                    <div class="color-picker">
+                                        <label>Color 3</label>
+                                        <input type="color" id="color3" value="#8b5cf6">
+                                    </div>
+                                </div>
+                                <div class="gradient-direction">
+                                    <label>Direction:</label>
+                                    <select id="gradientDirection">
+                                        <option value="135deg">Diagonal</option>
+                                        <option value="to right">Horizontal</option>
+                                        <option value="to bottom">Vertical</option>
+                                        <option value="circle">Circular</option>
+                                    </select>
+                                </div>
+                                <div class="gradient-preview-custom" id="customGradientPreview"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Offer Details Form -->
+                        <div class="offer-details-form">
+                            <div class="form-group">
+                                <label for="offerTitle">
+                                    <i class="fas fa-heading"></i>
+                                    Offer Title
+                                </label>
+                                <input type="text" id="offerTitle" placeholder="e.g., Grand Opening Special!" maxlength="50">
+                                <small class="char-count">50 characters max</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="offerDescription">
+                                    <i class="fas fa-align-left"></i>
+                                    Offer Description
+                                </label>
+                                <textarea id="offerDescription" placeholder="Describe your special offer..." rows="3" maxlength="200"></textarea>
+                                <small class="char-count">200 characters max</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="offerDuration">
+                                    <i class="fas fa-clock"></i>
+                                    Show for (minutes)
+                                </label>
+                                <input type="number" id="offerDuration" value="1" min="1" max="10">
+                                <small>Offer will popup after this many minutes</small>
+                            </div>
+                            <!-- In the offer details form section -->
+<div class="form-actions">
+    <button class="preview-offer-btn" id="previewOfferBtn">
+        <i class="fas fa-eye"></i>
+        Preview Offer
+    </button>
+    
+    <div class="action-buttons">
+        <button class="delete-offer-btn" id="deleteOfferBtn" disabled>
+            <i class="fas fa-trash"></i>
+            Delete Current Offer
+        </button>
+        <button class="publish-offer-btn" id="publishOfferBtn">
+            <i class="fas fa-paper-plane"></i>
+            Publish Offer
+        </button>
+    </div>
+</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Offer Preview Modal -->
+                    <div class="offer-preview-modal" id="offerPreviewModal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Offer Preview</h3>
+                                <button class="close-modal" id="closePreviewModal">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="offer-preview" id="liveOfferPreview">
+                                    <!-- Preview loaded via JS -->
+                                </div>
+                                <p class="preview-note">This is how your offer will appear to customers after 1 minute on the website.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="edit-offer-btn" id="editOfferBtn">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Again
+                                </button>
+                                <button class="confirm-publish-btn" id="confirmPublishBtn">
+                                    <i class="fas fa-check-circle"></i>
+                                    Yes, Publish This
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Quick Stats -->
+            <section class="quick-stats">
+                <div class="stats-card">
+                    <h3><i class="fas fa-chart-line"></i> Weekly Performance</h3>
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+                
+                <div class="stats-card">
+                    <h3><i class="fas fa-users"></i> Top Services</h3>
+                    <div class="top-services-list" id="topServicesList">
+                        <!-- Top services loaded via JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="admin-footer">
+            <div class="footer-content">
+                <p>
+                    <i class="fas fa-heart"></i>
+                    Healing Hands Executive Barbershop Admin Panel
+                </p>
+                <p class="copyright">
+                    &copy; 2024 Boss Lady's Dashboard. All rights reserved.
+                    <span class="version">v2.0.1</span>
+                </p>
+            </div>
+            
+            <div class="footer-actions">
+                <button class="help-btn" id="helpBtn">
+                    <i class="fas fa-question-circle"></i>
+                    Help
+                </button>
+                <button class="export-btn" id="exportBtn">
+                    <i class="fas fa-download"></i>
+                    Export Data
+                </button>
+            </div>
+        </footer>
+    </main>
+    
+    <!-- JavaScript Files -->
+    <script src="admin-dashboard.js"></script>
+    <script src="admin-services.js"></script>
+    <script src="admin-offers.js"></script>
+    
+    <!-- Service Data -->
+    <script>
+        // Default services data
+        const defaultServices = {
+            makeup: [
+                { id: 1, name: "Simple Make-up", price: 500, editable: true },
+                { id: 2, name: "Full Make-up", price: 1000, editable: true },
+                { id: 3, name: "Bridal Make-up", price: 2500, editable: true },
+                { id: 4, name: "Photoshop Make-up", price: 800, editable: true },
+                { id: 5, name: "Male Make-up", price: 500, editable: true }
+            ],
+            facials: [
+                { id: 6, name: "Simple Product", price: 1000, editable: true },
+                { id: 7, name: "Garnier Product", price: 1200, editable: true },
+                { id: 8, name: "Skin Touch Project", price: 800, editable: true },
+                { id: 9, name: "Half Facial", price: 600, editable: true }
+            ],
+            waxing: [
+                { id: 10, name: "Eyebrow Waxing", price: 300, editable: true },
+                { id: 11, name: "Full Body Waxing", price: 2500, editable: true },
+                { id: 12, name: "Full Leg Wax", price: 900, editable: true },
+                { id: 13, name: "Half Leg", price: 500, editable: true },
+                { id: 14, name: "Brazilian Wax", price: 1200, editable: true }
+            ],
+            kinyozi: [
+                { id: 15, name: "Head Shave", price: 300, editable: true },
+                { id: 16, name: "Head Shave + Massage + Steam", price: 500, editable: true },
+                { id: 17, name: "Face Scrub", price: 300, editable: true },
+                { id: 18, name: "Nail Cutting", price: 200, editable: true },
+                { id: 19, name: "Beard Trim", price: 100, editable: true }
+            ],
+            massage: [
+                { id: 20, name: "Steam Massage", price: 4000, editable: true },
+                { id: 21, name: "Sensual Massage", price: 7000, editable: true },
+                { id: 22, name: "Bamboo Massage", price: 3500, editable: true },
+                { id: 23, name: "Teen Massage", price: 1000, editable: true },
+                { id: 24, name: "Swedish Massage", price: 2500, editable: true },
+                { id: 25, name: "Deep Tissue Massage", price: 3000, editable: true },
+                { id: 26, name: "Lava Stone Massage", price: 3500, editable: true },
+                { id: 27, name: "Sport Massage", price: 3500, editable: true }
+            ],
+            nails: [
+                { id: 28, name: "Gel Application", price: 400, editable: true },
+                { id: 29, name: "Artificial Nail", price: 600, editable: true },
+                { id: 30, name: "Acrylic", price: 1200, editable: true },
+                { id: 31, name: "Manicure (full)", price: 900, editable: true },
+                { id: 32, name: "Pedicure (full)", price: 900, editable: true }
+            ]
+        };
+    </script>
+</body>
+</html>

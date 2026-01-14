@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /private/
+Disallow: /cgi-bin/
+Crawl-delay: 10
+
+Sitemap: https://neohub254.github.io/healing-hands-barbershop/sitemap.xml
+
+# Block specific bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+# Allow Google and Bing
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+# Allow social media bots
+User-agent: Twitterbot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+# Allow search engines to index images
+User-agent: Googlebot-Image
+Allow: /
